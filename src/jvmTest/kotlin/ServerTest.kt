@@ -1,5 +1,7 @@
 fun main(args: Array<String>) {
-  foo(3)
+  // foo(3)
+  val getBook = ::Book
+  println(getBook("Dive into Kotlin").name)
 }
 
 fun foo(x: Int) {
@@ -8,3 +10,6 @@ fun foo(x: Int) {
   }
   println(double(x))
 }
+
+class Book(val name: String)
+
