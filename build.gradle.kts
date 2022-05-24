@@ -12,6 +12,12 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
 }
 
+
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    testImplementation(kotlin("test"))
+}
+
 kotlin {
     jvm {
         compilations.all {
