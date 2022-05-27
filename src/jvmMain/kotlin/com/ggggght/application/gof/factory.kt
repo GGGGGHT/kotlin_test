@@ -2,6 +2,15 @@ package com.ggggght.application.gof
 
 interface Computer {
     val cpu: String
+
+    companion object ComputerFactory{
+        operator fun invoke(type: ComputerType) : Computer {
+            return when(type) {
+                ComputerType.PC -> PC()
+                ComputerType.Server -> Server()
+            }
+        }
+    }
 }
 
 class PC(override val cpu: String = "Core") : Computer
@@ -31,5 +40,7 @@ object ComputerFactory {
 val comp = ComputerFactory(ComputerType.PC)
 
 fun main() {
+    Computer.ComputerFactory(ComputerType.Server)
+    Computer(ComputerType.Server)
     println(comp.cpu)
 }
