@@ -17,6 +17,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("javax.visrec:visrec-api:1.0.5")
     implementation("javax.visrec:visrec-ri:1.0.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     testImplementation(kotlin("test"))
 }
 
