@@ -1,9 +1,10 @@
 package com.ggggght.application.concurrent
 
 import kotlinx.coroutines.*
+import kotlin.concurrent.thread
 import kotlin.system.measureTimeMillis
 
-fun main() = runBlocking {
+fun main() {
   // var job = launch {
   //   delay(1000)
   //   println("World!")
@@ -11,20 +12,26 @@ fun main() = runBlocking {
   //
   // print("Hello,")
   // job.join()
-  val timeNonBlock = measureTimeMillis {
-    val one = async { searchIemOne() }
-    val two = async { searchItemTwo() }
-    println("The answer is ${one.await()} + ${two.await()}")
+  // val timeNonBlock = measureTimeMillis {
+  //   val one = async { searchIemOne() }
+  //   val two = async { searchItemTwo() }
+  //   println("The answer is ${one.await()} + ${two.await()}")
+  // }
+  //
+  // val timeBlock = measureTimeMillis {
+  //   val one = searchIemOne()
+  //   val two = searchItemTwo()
+  //   println("The answer is $one + $two")
+  // }
+  //
+  // println("block Cost time is $timeBlock ms")
+  // println("nonblock Cost time is $timeNonBlock ms")
+  repeat(100_000) { // launch a lot of coroutines
+    thread{
+      Thread.sleep(5000L)
+      print(".")
+    }
   }
-
-  val timeBlock = measureTimeMillis {
-    val one = searchIemOne()
-    val two = searchItemTwo()
-    println("The answer is $one + $two")
-  }
-
-  println("block Cost time is $timeBlock ms")
-  println("nonblock Cost time is $timeNonBlock ms")
 }
 
 suspend fun searchIemOne(): String {
